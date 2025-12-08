@@ -3,7 +3,7 @@ uvicorn[standard]==0.29.0
 pdfplumber==0.11.0
 faiss-cpu==1.13.1
 numpy==1.26.4
-openai==1.14.2
+openai==1.40.2
 python-multipart==0.0.6
 requests==2.31.0
 streamlit==1.31.0
