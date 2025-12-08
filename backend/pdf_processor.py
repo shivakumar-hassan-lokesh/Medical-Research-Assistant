@@ -24,7 +24,7 @@ def extract_pdf_text(pdf_path):
             page_text = page.extract_text() or ""
             text += page_text + "\n"
 
-    # Detect scanned or empty PDFs (pdfplumber returns None for scanned images)
+    # Scanned PDF = empty text
     if len(text.strip()) < 30:
         return "IMAGE_ONLY_PDF"
 
@@ -33,4 +33,4 @@ def extract_pdf_text(pdf_path):
 
 def chunk_text(text, size=400):
     words = text.split()
-    return [" ".join(words[i:i+size]) for i in range(0, len(words), size)]
+    return [" ".join(words[i:i + size]) for i in range(0, len(words), size)]
