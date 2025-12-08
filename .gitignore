@@ -1,0 +1,28 @@
+# Environment file
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# macOS junk
+.DS_Store
+
+# Virtual environment
+venv/
+VENV/
+env/
+
+# Local data generated at runtime
+data/pdfs/
+data/vector_store/
+backend/db/
+
+# Streamlit cache
+.streamlit/
+
+# Jupyter (if any)
+.ipynb_checkpoints/
+
+# Logs
+*.log
