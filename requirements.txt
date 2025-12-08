@@ -1,6 +1,9 @@
 fastapi==0.110.0
 uvicorn[standard]==0.29.0
-pymupdf==1.23.26
+
+# PDF reading alternative (pure Python, no C++ compile)
+pypdf==4.1.0   
+
 sentence-transformers==2.2.2
 faiss-cpu==1.7.4
 numpy==1.26.4
