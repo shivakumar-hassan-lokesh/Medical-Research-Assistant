@@ -1,4 +1,4 @@
-import fitz
+import pdfplumber
 import os
 from backend.config import PDF_FOLDER, MAX_PDFS
 
@@ -12,22 +12,23 @@ def save_pdf(file):
     file_path = f"{PDF_FOLDER}/{file.filename}"
     with open(file_path, "wb") as f:
         f.write(file.file.read())
+
     return file_path
 
 
 def extract_pdf_text(pdf_path):
-    doc = fitz.open(pdf_path)
     text = ""
 
-    for page in doc:
-        text += page.get_text()
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text() or ""
+            text += page_text + "\n"
 
-    # Detect scanned or empty PDFs
+    # Detect scanned or empty PDFs (pdfplumber returns None for scanned images)
     if len(text.strip()) < 30:
         return "IMAGE_ONLY_PDF"
 
     return text
-
 
 
 def chunk_text(text, size=400):
